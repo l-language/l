@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.18">
+  <compounddef id="namespace_l_1_1_base" kind="namespace" language="C++">
+    <compoundname>L::Base</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespace_l_1_1_base_1ab182af3b6b610cd1fb642215737aedaa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool L::Base::IsLittleEndian</definition>
+        <argsstring>()</argsstring>
+        <name>IsLittleEndian</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/L/base/binary.cpp" line="4" column="14" bodyfile="src/L/base/binary.cpp" bodystart="4" bodyend="7" declfile="include/L/base/binary.hpp" declline="5" declcolumn="21"/>
+        <referencedby refid="_l_8cpp_1abf9e6b7e6f15df4b525a2e7705ba3089" compoundref="_l_8cpp" startline="2" endline="8">main</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/L/base/binary.cpp" line="3" column="5"/>
+  </compounddef>
+</doxygen>

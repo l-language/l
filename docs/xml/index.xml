@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.18">
+  <compound refid="namespace_l" kind="namespace"><name>L</name>
+  </compound>
+  <compound refid="namespace_l_1_1_base" kind="namespace"><name>L::Base</name>
+    <member refid="namespace_l_1_1_base_1ab182af3b6b610cd1fb642215737aedaa" kind="function"><name>IsLittleEndian</name></member>
+  </compound>
+  <compound refid="_l_8hpp" kind="file"><name>L.hpp</name>
+  </compound>
+  <compound refid="binary_8hpp" kind="file"><name>binary.hpp</name>
+  </compound>
+  <compound refid="lexer_8hpp" kind="file"><name>lexer.hpp</name>
+  </compound>
+  <compound refid="_l_8cpp" kind="file"><name>L.cpp</name>
+    <member refid="_l_8cpp_1abf9e6b7e6f15df4b525a2e7705ba3089" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="binary_8cpp" kind="file"><name>binary.cpp</name>
+  </compound>
+  <compound refid="lexer_8cpp" kind="file"><name>lexer.cpp</name>
+  </compound>
+  <compound refid="dir_a5093aadc68f934ba52fabd07d3cbd65" kind="dir"><name>include/L/base</name>
+  </compound>
+  <compound refid="dir_11d155e6f3612fd9747b9adb1235d1b2" kind="dir"><name>src/L/base</name>
+  </compound>
+  <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
+  </compound>
+  <compound refid="dir_30f73dbdf9d193d8b94c1ca37198e95f" kind="dir"><name>include/L</name>
+  </compound>
+  <compound refid="dir_a40fdfa322aed6764bf989785e2b680d" kind="dir"><name>src/L</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+</doxygenindex>

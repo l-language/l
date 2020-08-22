@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.18">
+  <compounddef id="dir_a5093aadc68f934ba52fabd07d3cbd65" kind="dir">
+    <compoundname>include/L/base</compoundname>
+    <innerfile refid="binary_8hpp">binary.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/L/base/"/>
+  </compounddef>
+</doxygen>

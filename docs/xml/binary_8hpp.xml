@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.18">
+  <compounddef id="binary_8hpp" kind="file" language="C++">
+    <compoundname>binary.hpp</compoundname>
+    <includes refid="_l_8hpp" local="no">L.hpp</includes>
+    <includedby refid="binary_8cpp" local="no">src/L/base/binary.cpp</includedby>
+    <includedby refid="_l_8hpp" local="no">include/L.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/L/base/binary.hpp</label>
+        <link refid="binary_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>L.hpp</label>
+        <link refid="_l_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>new</label>
+      </node>
+      <node id="5">
+        <label>cstdlib</label>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>src/L/base/binary.cpp</label>
+        <link refid="binary_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/L/base/binary.hpp</label>
+        <link refid="binary_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/L/lexer.hpp</label>
+        <link refid="lexer_8hpp"/>
+      </node>
+      <node id="3">
+        <label>include/L.hpp</label>
+        <link refid="_l_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/L.cpp</label>
+        <link refid="_l_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespace_l">L</innernamespace>
+    <innernamespace refid="namespace_l_1_1_base">L::Base</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_l_8hpp" kindref="compound">L.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_l" kindref="compound">L</ref>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Base{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespace_l_1_1_base_1ab182af3b6b610cd1fb642215737aedaa" kindref="member">IsLittleEndian</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="include/L/base/binary.hpp"/>
+  </compounddef>
+</doxygen>

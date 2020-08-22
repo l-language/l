@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.18">
+  <compounddef id="dir_30f73dbdf9d193d8b94c1ca37198e95f" kind="dir">
+    <compoundname>include/L</compoundname>
+    <innerdir refid="dir_a5093aadc68f934ba52fabd07d3cbd65">include/L/base</innerdir>
+    <innerfile refid="lexer_8hpp">lexer.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/L/"/>
+  </compounddef>
+</doxygen>

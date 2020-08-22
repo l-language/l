@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.18">
+  <compounddef id="_l_8hpp" kind="file" language="C++">
+    <compoundname>L.hpp</compoundname>
+    <includes local="no">iostream</includes>
+    <includes local="no">new</includes>
+    <includes local="no">cstdlib</includes>
+    <includes refid="binary_8hpp" local="no">L/base/binary.hpp</includes>
+    <includedby refid="_l_8cpp" local="no">src/L.cpp</includedby>
+    <includedby refid="binary_8hpp" local="no">include/L/base/binary.hpp</includedby>
+    <includedby refid="lexer_8hpp" local="no">include/L/lexer.hpp</includedby>
+    <incdepgraph>
+      <node id="5">
+        <label>L/base/binary.hpp</label>
+        <link refid="binary_8hpp"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/L.hpp</label>
+        <link refid="_l_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>new</label>
+      </node>
+      <node id="4">
+        <label>cstdlib</label>
+      </node>
+      <node id="2">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>src/L/base/binary.cpp</label>
+        <link refid="binary_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/L/base/binary.hpp</label>
+        <link refid="binary_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/L/lexer.hpp</label>
+        <link refid="lexer_8hpp"/>
+      </node>
+      <node id="1">
+        <label>include/L.hpp</label>
+        <link refid="_l_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/L.cpp</label>
+        <link refid="_l_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;new&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="binary_8hpp" kindref="compound">L/base/binary.hpp</ref>&gt;</highlight></codeline>
+    </programlisting>
+    <location file="include/L.hpp"/>
+  </compounddef>
+</doxygen>
