@@ -52,7 +52,14 @@
         "any": "cpp",
         "map": "cpp",
         "filesystem": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "atomic": "cpp",
+        "compare": "cpp",
+        "ctime": "cpp",
+        "xlocbuf": "cpp",
+        "xlocmes": "cpp",
+        "xlocmon": "cpp",
+        "xloctime": "cpp"
     },
     "files.encoding": "gbk",
     "cmake.buildDirectory": "${workspaceFolder}/out",

@@ -1,5 +1,9 @@
 #pragma once
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <locale>
 #include <new>
 #include <cstdlib>
 #include <L/base/binary.hpp>

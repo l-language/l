@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${command:cmake.launchTargetPath}",
             "args": [
-                "test/HelloWorld.std"
+                "test/HelloWorld.l"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -23,7 +23,7 @@
             "request": "launch",
             "program": "${command:cmake.launchTargetPath}",
             "args": [
-                "test/helloworld.js"
+                "test/helloworld.l"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
