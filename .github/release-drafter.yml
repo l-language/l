@@ -3,6 +3,7 @@ tag-template: 'release-v$NEXT_PATCH_VERSION'
 categories:
   - title: 'Features'
     labels:
+      - 'feat'
       - 'feature'
       - 'enhancement'
   - title: 'Bug Fixes'
@@ -13,7 +14,14 @@ categories:
   - title: 'Maintenance'
     labels:
       - 'chore'
-      - 'documentation'
+      - 'docs'
+      - 'ci'
+      - 'build'
+  - title: 'Optimization'
+    labels:
+      - 'perf'
+      - 'style'
+      - 'refactor'
 change-template: '- $TITLE (#$NUMBER) @$AUTHOR'
 template: |
   $CHANGES
