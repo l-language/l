@@ -23,10 +23,8 @@ namespace L {
 				result.back() += temp;
 				continue;
 			}
-			if (result.back() != "")
-				result.push_back(Token{ temp });
-			else
-				result.back() += Token{ temp };
+			if (result.back() != "") result.push_back(Token{ temp });
+			else result.back() += Token{ temp };
 		}
 	}
 	Lexer::~Lexer() {
