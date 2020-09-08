@@ -1,9 +1,10 @@
 cmake_minimum_required (VERSION 3.8)
+project ("L")
+
 set(CMAKE_CXX_STANDARD 17)
 set(L_VERSION_MAJOR 0)
 set(L_VERSION_MINOR 0)
 set(L_VERSION_PATCH 5)
-project ("L")
 
 include(InstallRequiredSystemLibraries)
 set (CPACK_RESOURCE_FILE_LICENSE
@@ -12,6 +13,11 @@ set (CPACK_PACKAGE_VERSION_MAJOR "${L_VERSION_MAJOR}")
 set (CPACK_PACKAGE_VERSION_MINOR "${L_VERSION_MINOR}")
 set (CPACK_PACKAGE_VERSION_PATCH "${L_VERSION_PATCH}")
 include(CPack)
+
+configure_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/include/version.hpp.in" 
+  "${CMAKE_CURRENT_SOURCE_DIR}/include/version.hpp"
+)
 
 include_directories(include)
 file(GLOB_RECURSE libL_SOURCES CONFIGURE_DEPENDS src/L/*.cpp)

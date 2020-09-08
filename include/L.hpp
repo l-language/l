@@ -7,3 +7,4 @@
 #include <new>
 #include <cstdlib>
 #include <L/base/binary.hpp>
+#include <version.hpp>
