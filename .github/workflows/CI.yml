@@ -21,7 +21,7 @@ jobs:
           yarn;
           sudo apt-get remove g++;
           sudo apt-get install -y cmake g++-9
-      - name: Make
+      - name: CMake
         run:
           chmod +x ./build;
           ./build      
@@ -32,7 +32,10 @@ jobs:
       - name: Changelog
         run: yarn run version
       - name: Commit
-        run: git commit -m "(Github Action) Update changelog"
+        run: 
+        git config --global user.email "small-pony@qq.com";
+        git config --global user.name "hydrioner";
+        git commit -m "(Github Action) Update changelog"
       - name: Push
         run: git push
       - uses: actions/checkout@v2
