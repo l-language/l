@@ -7,7 +7,7 @@ static void append(std::vector<std::string>& target, std::string str) {
 }
 namespace L {
 	Lexer::Lexer(std::istream& fin_) :
-		fin(std::move(fin_)) {
+		fin(fin_) {
 	}
 	Lexer::~Lexer() {
 	}
