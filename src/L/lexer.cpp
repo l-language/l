@@ -1,32 +1,52 @@
 #include <L/lexer.hpp>
-static bool isToken(std::string str) {
-	using namespace std;
-	int i = 0;
-	for (auto&& c : str) {
-		if (isdigit(c) && i == 0)
-			return false;
-		if (ispunct(c) || !isalpha(c))
-			return false;
-	}
-	return true;
+static void append(std::vector<std::string>& target, std::string str) {
+	if (target.back() != "")
+		target.push_back(str);
+	else
+		target.back() += str;
 }
 namespace L {
-	Lexer::Lexer(std::ifstream& fin) {
+	Lexer::Lexer(std::istream& fin_) :
+		fin(std::move(fin_)) {
+	}
+	Lexer::~Lexer() {
+	}
+	void Lexer::readIdentifier() {
+		char temp;
+		while ((temp = fin.get()) != EOF) {
+			result.back() += temp;
+			char peek = fin.peek();
+			if (!(isdigit(peek) || isalpha(peek) || peek == '_'))
+				break;
+		}
+	}
+	void Lexer::readString() {
+		char temp;
+		bool escape = false;
+		char quote = result.back().back();
+		while ((temp = fin.get()) != EOF) {
+			result.back() += temp;
+			if (escape || temp == '\\')
+				escape = !escape;
+			else if(temp == quote)
+				break;
+		}
+	}
+	std::vector<Token> Lexer::operator()() {
 		char temp;
 		while ((temp = fin.get()) != EOF) {
 			if (isspace(temp) || temp == '\n') {
-				if (result.back() != "")
-					result.push_back("");
-				continue;
+				append(result, "");
+			} else if (isalpha(temp)) {
+				append(result, std::string{ temp });
+				readIdentifier();
+			} else if (temp == '"' || temp == '\'') {
+				append(result, std::string{ temp });
+				readString();
+			} else {
+				append(result, std::string{ temp });
 			}
-			if (isToken(result.back() + temp) && result.back() != "") {
-				result.back() += temp;
-				continue;
-			}
-			if (result.back() != "") result.push_back(Token{ temp });
-			else result.back() += Token{ temp };
 		}
-	}
-	Lexer::~Lexer() {
+		return result;
 	}
 }
