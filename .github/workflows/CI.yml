@@ -33,9 +33,9 @@ jobs:
         run: yarn run version
       - name: Commit
         run: 
-        git config --global user.email "small-pony@qq.com";
-        git config --global user.name "hydrioner";
-        git commit -m "(Github Action) Update changelog"
+          git config --global user.email "small-pony@qq.com";
+          git config --global user.name "hydrioner";
+          git commit -m "(Github Action) Update changelog"
       - name: Push
         run: git push
       - uses: actions/checkout@v2
