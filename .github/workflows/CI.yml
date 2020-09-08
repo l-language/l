@@ -13,20 +13,26 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: installcmake
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1.4.3
+      - name: Install
         run: 
+          sudo npm install -g yarn
+          yarn
           sudo apt-get remove g++;
           sudo apt-get install -y cmake g++-9
-      - name: cmake
+      - name: Make
         run:
           chmod +x ./build;
           ./build      
-      - name: make
+      - name: Make
         run: cd out &&make
-      - name: package
+      - name: Package
         run: cd out &&make package
-      - uses: release-drafter/release-drafter@v5
-        name: Draft
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      - name: Changelog
+        run: yarn run version
+      - name: Commit
+        run: git commit -m "(Github Action) Update changelog"
+      - name: Push
+        run: git push
       - uses: actions/checkout@v2
