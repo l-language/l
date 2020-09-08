@@ -15,8 +15,8 @@ set (CPACK_PACKAGE_VERSION_PATCH "${L_VERSION_PATCH}")
 include(CPack)
 
 configure_file(
-  "${CMAKE_CURRENT_SOURCE_DIR}/include/version.hpp.in" 
-  "${CMAKE_CURRENT_SOURCE_DIR}/include/version.hpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/L/version.cpp.in" 
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/L/version.cpp"
 )
 
 include_directories(include)
