@@ -17,8 +17,8 @@ jobs:
         uses: actions/setup-node@v1.4.3
       - name: Install
         run: 
-          sudo npm install -g yarn
-          yarn
+          sudo npm install -g yarn;
+          yarn;
           sudo apt-get remove g++;
           sudo apt-get install -y cmake g++-9
       - name: Make
