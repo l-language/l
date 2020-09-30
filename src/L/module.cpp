@@ -1,4 +1,4 @@
 #include <L/module.hpp>
-namespace L{
-    
+namespace L {
+
 }

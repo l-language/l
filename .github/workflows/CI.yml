@@ -8,17 +8,11 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v1.4.3
       - name: Install
         run: 
-          sudo npm install -g yarn;
-          yarn;
           sudo apt-get remove g++;
           sudo apt-get install -y cmake g++-9
       - name: CMake
@@ -29,6 +23,18 @@ jobs:
         run: cd out &&make
       - name: Package
         run: cd out &&make package
+      - uses: actions/checkout@v2
+
+  chore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1.4.3
+      - name: Install
+        run: 
+          sudo npm install -g yarn;
+          yarn;
       - name: Changelog
         run: yarn run version
       - name: Commit

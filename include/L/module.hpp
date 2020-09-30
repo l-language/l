@@ -1,7 +1,6 @@
 #pragma once
 #include <L.hpp>
-namespace L{
-    class Module{
-
-    };
+namespace L {
+	class Module {
+	};
 }

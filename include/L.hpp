@@ -3,8 +3,10 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <initializer_list>
 #include <locale>
 #include <new>
+#include <memory>
 #include <cstdlib>
 #include <L/base/binary.hpp>
 #include <L/version.hpp>
