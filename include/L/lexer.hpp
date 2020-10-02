@@ -8,7 +8,7 @@
 #define GET_TYPE(tokenType) GetType<L::TokenType::tokenType>::Type
 #define DEFINE_READER(name) void read##name();
 #define DEFINE_GETTER(tokenType) std::shared_ptr<GET_TYPE(tokenType)> tokenType;
-#define DEFINE_CONSTRUCTOR()
+#define DEFINE_CONSTRUCTOR(tokenType) static GET_TYPE(tokenType) create##tokenType();
 
 namespace L {
 	enum class TokenType {
@@ -53,8 +53,6 @@ namespace L {
 			std::string(pc), type(type_) {}
 		Token(TokenType type_ = TokenType::Unknown) :
 			std::string(), type(type_) {}
-		bool operator==(Token& lhs) {
-		}
 		TokenType type;
 	};
 	class Lexer {

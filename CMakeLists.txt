@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.8)
 project ("L")
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 set(L_VERSION_MAJOR 0)
 set(L_VERSION_MINOR 0)
 set(L_VERSION_PATCH 5)

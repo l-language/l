@@ -9,6 +9,5 @@ int main(int argc, char const* argv[]) {
 	for (auto&& i : lexer()) {
 		cout << i << ",";
 	}
-	cout << endl << boolalpha << Lexer::isKeyword("static");
 	return 0;
 }
