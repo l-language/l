@@ -19,10 +19,10 @@ configure_file(
   "${CMAKE_CURRENT_SOURCE_DIR}/src/L/version.cpp"
 )
 
+add_subdirectory(./lib/glog)
 include_directories(include)
+include_directories(./lib/glog/src)
 file(GLOB_RECURSE libL_SOURCES CONFIGURE_DEPENDS src/L/*.cpp)
 add_library(libL OBJECT ${libL_SOURCES})
 add_executable(L src/L.cpp $<TARGET_OBJECTS:libL>)
-
-include(CTest)
-add_test(NAME lexer COMMAND L ./test/helloworld.l)
+target_link_libraries(L glog)
