@@ -1,15 +1,6 @@
 #pragma once
 #include <L.hpp>
-#define DEFINE_TOKEN_TYPE(tokenType, type)    \
-	template<>                                \
-	struct GetType<L::TokenType::tokenType> { \
-		using Type = type;                    \
-	};
-#define GET_TYPE(tokenType) GetType<L::TokenType::tokenType>::Type
 #define DEFINE_READER(name) void read##name();
-#define DEFINE_GETTER(tokenType) std::shared_ptr<GET_TYPE(tokenType)> tokenType;
-#define DEFINE_CONSTRUCTOR(tokenType) static GET_TYPE(tokenType) create##tokenType();
-
 namespace L {
 	enum class TokenType {
 		Identifier,
@@ -20,63 +11,51 @@ namespace L {
 		Operator,
 		Unknown,
 	};
-	template<TokenType>
-	struct GetType {
-		using Type = void;
+	enum class Reversed {
+		TK_void,
+		TK_bool,
+		TK_short,
+		TK_ushort,
+		TK_int,
+		TK_uint,
+		TK_long,
+		TK_ulong,
+		TK_double,
+		TK_udouble,
+		TK_string,
+		TK_cast,
+		TK_const,
+		TK_static,
+		TK_mutable,
+		TK_struct,
+		TK_namespace,
+		TK_using,
+		TK_enum
 	};
-
-	DEFINE_TOKEN_TYPE(Identifier, unsigned long long)
-	DEFINE_TOKEN_TYPE(Keyword, unsigned)
-	DEFINE_TOKEN_TYPE(Integer, int)
-	DEFINE_TOKEN_TYPE(Double, double)
-	DEFINE_TOKEN_TYPE(String, std::string)
-
-	class Token_ {
+	struct Token {
 	private:
-		static std::vector<std::string> findTable;
-		union {
-			DEFINE_GETTER(Identifier)
-			DEFINE_GETTER(Keyword)
-			DEFINE_GETTER(Integer)
-			DEFINE_GETTER(Double)
-			DEFINE_GETTER(String)
-		} token;
-
+		unsigned long long index;
 	public:
-		Token_();
-	};
-	class Token : public std::string {
-	public:
-		Token(std::initializer_list<char> c, TokenType type_ = TokenType::Unknown) :
-			std::string(c), type(type_) {}
-		Token(const char* const pc, TokenType type_ = TokenType::Unknown) :
-			std::string(pc), type(type_) {}
-		Token(TokenType type_ = TokenType::Unknown) :
-			std::string(), type(type_) {}
 		TokenType type;
+		Token(std::string,std::vector<std::string>&);
+		std::string get();
 	};
 	class Lexer {
 	private:
-		std::vector<Token> result{ "" };
 		std::istream& fin;
+		char current;
 
 	public:
 		Lexer(std::istream&);
 		~Lexer();
-		std::vector<Token> operator()();
+		Token operator()();
 
-
-
-		DEFINE_READER(Identifier)
 		DEFINE_READER(String)
 		DEFINE_READER(Number)
 
-		static bool isKeyword(Token);
-		static const std::vector<Token> keywords;
+		static bool isKeyword(std::string);
+		static const std::vector<std::string> keywords;
 	};
 }
 
 #undef DEFINE_READER
-#undef DEFINE_TOKEN_TYPE
-#undef DEFINE_GETTER
-#undef GET_TYPE

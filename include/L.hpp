@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <initializer_list>
+#include <iterator>
 #include <algorithm>
 #include <locale>
 #include <new>

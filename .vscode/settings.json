@@ -59,7 +59,8 @@
         "xlocbuf": "cpp",
         "xlocmes": "cpp",
         "xlocmon": "cpp",
-        "xloctime": "cpp"
+        "xloctime": "cpp",
+        "algorithm": "cpp"
     },
     "files.encoding": "gbk",
     "cmake.buildDirectory": "${workspaceFolder}/out",

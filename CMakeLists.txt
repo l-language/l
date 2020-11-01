@@ -23,3 +23,6 @@ include_directories(include)
 file(GLOB_RECURSE libL_SOURCES CONFIGURE_DEPENDS src/L/*.cpp)
 add_library(libL OBJECT ${libL_SOURCES})
 add_executable(L src/L.cpp $<TARGET_OBJECTS:libL>)
+
+include(CTest)
+add_test(NAME lexer COMMAND L ./test/helloworld.l)

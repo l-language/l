@@ -1,63 +1,74 @@
 #include <L/lexer.hpp>
-
-static void append(std::vector<L::Token>& target, L::Token str) {
-	if (target.back() != "")
-		target.push_back(str);
-	else
-		target.back() += str;
-}
+#include <L/helper.hpp>
+using namespace std;
+static std::vector<std::string> table{};
 
 namespace L {
+	Token::Token(string str, std::vector<std::string>& context = table) {
+		auto& keywords = Lexer::keywords;
+		if (Lexer::isKeyword(str)) {
+			type = TokenType::Keyword;
+			index = distance(begin(keywords), find(begin(keywords), end(keywords), str));
+		} else {
+			type = TokenType::Identifier;
+			index = distance(begin(context), find(begin(context), end(context), str));
+			if (index == distance(begin(context), end(context))) {
+				table.push_back(str);
+			}
+		}
+	}
+	string Token::get(){
+		switch(type){
+			case TokenType::Keyword : {
+				return Lexer::keywords[index];
+			}
+			case TokenType::Identifier : {
+				return table[index];
+			}
+		}
+		return "";
+	}
 	Lexer::Lexer(std::istream& fin_) :
 		fin(fin_) {
 	}
 	Lexer::~Lexer() {
 	}
-	void Lexer::readIdentifier() {
-		char temp;
-		while ((temp = fin.get()) != EOF) {
-			result.back() += temp;
-			char peek = fin.peek();
-			if (!(isdigit(peek) || isalpha(peek) || peek == '_'))
-				break;
-		}
-	}
 	void Lexer::readString() {
-		char temp;
+		std::string result;
 		bool escape = false;
 		char quote = fin.get();
-		append(result, Token{ quote });
-		while ((temp = fin.get()) != EOF) {
-			result.back() += temp;
-			if (escape || temp == '\\')
+		result += quote;
+		while ((current = fin.get()) != EOF) {
+			result += current;
+			if (escape || current == '\\')
 				escape = !escape;
-			else if (temp == quote)
+			else if (current == quote)
 				break;
 		}
-		result.back().type = TokenType::String;
 	}
-	std::vector<Token> Lexer::operator()() {
-		char temp;
-		while ((temp = fin.get()) != EOF) {
-			if (isspace(temp) || iscntrl(temp) || temp == '\n') {
-				append(result, "");
-			} else if (isalpha(temp)) {
-				fin.unget();
-				readIdentifier();
-			} else if (temp == '"' || temp == '\'') {
-				fin.unget();
-				readString();
-			} else {
-				append(result, Token{ temp });
+	Token Lexer::operator()() {
+		while ((current = fin.get()) != EOF) {
+			switch (current) {
+			case ' ':
+			case '\t':
+			case '\n':
+				return Token{ "" };
+			default:
+				std::string result;
+				if (Helper::islalpha(current)) {
+					while (Helper::islalnum(current))
+						result += current;
+				} else {
+				}
+				return Token{ "" };
+				break;
 			}
 		}
-		return result;
 	}
 
-	const std::vector<Token> Lexer::keywords = {
+	const std::vector<std::string> Lexer::keywords = {
 		"void",
 		"bool",
-		"char",
 		"short",
 		"ushort",
 		"int",
@@ -76,7 +87,7 @@ namespace L {
 		"using",
 		"enum"
 	};
-	bool Lexer::isKeyword(Token token) {
+	bool Lexer::isKeyword(std::string token) {
 		return std::find(begin(keywords), end(keywords), token) != end(keywords);
 	}
 }
