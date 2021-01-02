@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${command:cmake.launchTargetPath}",
             "args": [
-                "test/HelloWorld.l"
+                "test/hello.l"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

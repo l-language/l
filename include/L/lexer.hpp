@@ -1,6 +1,8 @@
 #pragma once
 #include <L.hpp>
-#define DEFINE_READER(name) void read##name();
+#include <map>
+#include <iterator>
+#define DEFINE_READER(name) L::Token read##name();
 namespace L {
 	enum class TokenType {
 		Identifier,
@@ -32,27 +34,49 @@ namespace L {
 		TK_using,
 		TK_enum
 	};
-	struct Token {
+	enum class Operator{
+		Not,
+		NotEquals, EqualsEquals,
+		OpenBrace, CloseBrace,
+		OpenParen, CloseParen,
+		OpenBracket, CloseBracket,
+		Plus, Minus, Asterisk, Slash,
+		MinusMinus, PlusPlus,
+		Equals, PlusEquals, MinusEquals, AsteriskEquals, SlashEquals,
+		Comment, EndLine, EndOfFile, Unknown,
+	};
+	class Token {
 	private:
 		unsigned long long index;
 	public:
+		static std::vector<std::string> table;
 		TokenType type;
-		Token(std::string,std::vector<std::string>&);
+		Token(std::string);
+		Token(Operator);
+		Token(): type(TokenType::Unknown){}
 		std::string get();
+		bool operator==(Token other){
+			return other.type == type && other.index == index;
+		}
+		bool operator!=(Token other){
+			return other.type != type || other.index != index;
+		}
 	};
 	class Lexer {
 	private:
 		std::istream& fin;
 		char current;
-
+		std::size_t line = 1;
+		char next(){return current = fin.get();}
+		void unget(){fin.unget();}
+		char peek(){return fin.peek();}
 	public:
 		Lexer(std::istream&);
 		~Lexer();
 		Token operator()();
-
 		DEFINE_READER(String)
 		DEFINE_READER(Number)
-
+		DEFINE_READER(Operator)
 		static bool isKeyword(std::string);
 		static const std::vector<std::string> keywords;
 	};

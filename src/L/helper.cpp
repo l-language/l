@@ -7,5 +7,8 @@ namespace L {
 		bool islalpha(char c) {
 			return std::isalpha(c) || c == '_';
 		}
+		bool islpunct(char c) {
+			return std::ispunct(c) && c != '_';
+		}
 	}
 }

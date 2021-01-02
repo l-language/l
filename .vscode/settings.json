@@ -60,7 +60,17 @@
         "xlocmes": "cpp",
         "xlocmon": "cpp",
         "xloctime": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "cstdarg": "cpp",
+        "deque": "cpp",
+        "functional": "cpp",
+        "iomanip": "cpp",
+        "queue": "cpp",
+        "set": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "xhash": "cpp",
+        "xtree": "cpp"
     },
     "files.encoding": "gbk",
     "cmake.buildDirectory": "${workspaceFolder}/out",

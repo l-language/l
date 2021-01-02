@@ -2,7 +2,8 @@
 #include <L.hpp>
 namespace L {
 	namespace Helper {
-		bool islalnum(char);
-		bool islalpha(char);
+		extern bool islalnum(char);
+		extern bool islalpha(char);
+		extern bool islpunct(char);
 	}
 }
