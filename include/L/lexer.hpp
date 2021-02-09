@@ -35,7 +35,7 @@ namespace L {
 		TK_enum
 	};
 	enum class Operator{
-		Not,
+		Not = 1,
 		NotEquals, EqualsEquals,
 		OpenBrace, CloseBrace,
 		OpenParen, CloseParen,
@@ -43,13 +43,13 @@ namespace L {
 		Plus, Minus, Asterisk, Slash,
 		MinusMinus, PlusPlus,
 		Equals, PlusEquals, MinusEquals, AsteriskEquals, SlashEquals,
+		LessThan, GreaterThan,
 		Comment, EndLine, EndOfFile, Unknown,
 	};
 	class Token {
-	private:
-		unsigned long long index;
 	public:
 		static std::vector<std::string> table;
+		unsigned long long index;
 		TokenType type;
 		Token(std::string);
 		Token(Operator);

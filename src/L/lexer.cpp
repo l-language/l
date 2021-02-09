@@ -109,13 +109,21 @@ namespace L {
 				return Operator::Asterisk;
 			}
 			case '/': {
+				if(peek() == '*'){
+					next();
+					while((current = next()) != '*'&&peek() != '/' ){
+						if(current = '\n') line++;
+					}
+					next();
+					return Operator::Comment;
+				}
 				if(peek() == '='){
 					next();
 					return Operator::SlashEquals;
 				}
 				if(peek() == '/'){
 					next();
-					while (peek() == '\n'||peek() == EOF){
+					while (peek() != '\n'&&peek() != EOF){
 						fin.get();
 					}
 					++line;
