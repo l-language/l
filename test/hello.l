@@ -1,1 +1,1 @@
-print("HelloWorld");/* hhhhhhh */
+let a : duwuidwudhw = djdfhsdugfuseg;

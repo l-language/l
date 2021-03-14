@@ -4,7 +4,7 @@
 #include <iterator>
 #define DEFINE_READER(name) L::Token read##name();
 namespace L {
-	enum class TokenType {
+	enum class TokenKind {
 		Identifier,
 		Keyword,
 		Integer,
@@ -44,16 +44,17 @@ namespace L {
 		MinusMinus, PlusPlus,
 		Equals, PlusEquals, MinusEquals, AsteriskEquals, SlashEquals,
 		LessThan, GreaterThan,
+		Colon,
 		Comment, EndLine, EndOfFile, Unknown,
 	};
 	class Token {
 	public:
 		static std::vector<std::string> table;
 		unsigned long long index;
-		TokenType type;
+		TokenKind type;
 		Token(std::string);
 		Token(Operator);
-		Token(): type(TokenType::Unknown){}
+		Token(): type(TokenKind::Unknown){}
 		std::string get();
 		bool operator==(Token other){
 			return other.type == type && other.index == index;

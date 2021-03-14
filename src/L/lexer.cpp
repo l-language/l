@@ -7,10 +7,10 @@ namespace L {
 		auto& keywords = Lexer::keywords;
 		auto iter = find(begin(keywords), end(keywords), str);
 		if (iter != end(keywords)) {
-			type = TokenType::Keyword;
+			type = TokenKind::Keyword;
 			index = distance(begin(keywords), iter);
 		} else {
-			type = TokenType::Identifier;
+			type = TokenKind::Identifier;
 			index = distance(begin(table), find(begin(table), end(table), str));
 			if (index == distance(begin(table), end(table))) {
 				table.push_back(str);
@@ -18,18 +18,18 @@ namespace L {
 		}
 	}
 	Token::Token(Operator op){
-		type = TokenType::Operator;
+		type = TokenKind::Operator;
 		index = static_cast<std::size_t>(op);
 	}
 	string Token::get(){
 		switch(type){
-			case TokenType::Keyword : {
+			case TokenKind::Keyword : {
 				return Lexer::keywords[index];
 			}
-			case TokenType::Identifier : {
+			case TokenKind::Identifier : {
 				return table[index];
 			}
-			case TokenType::Operator: {
+			case TokenKind::Operator: {
 				return to_string(index);
 			}
 		}
@@ -150,6 +150,8 @@ namespace L {
 				return Operator::OpenBrace;
 			case '}':
 				return Operator::CloseBrace;
+			case ':':
+				return Operator::Colon;
 			case ';':
 				return Operator::EndLine;
 		}
@@ -183,6 +185,7 @@ namespace L {
 		return Token(Operator::EndOfFile);
 	}
 	const std::vector<std::string> Lexer::keywords = {
+		"let",
 		"void",
 		"bool",
 		"short",

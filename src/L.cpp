@@ -1,6 +1,7 @@
 #include <L.hpp>
 #include <L/lexer.hpp>
-
+#include <L/ast/ast.hpp>
+#include <L/ast/parser.hpp>
 
 
 int main(int argc, char const* argv[]) {
@@ -14,11 +15,9 @@ int main(int argc, char const* argv[]) {
 	if(!fin.is_open()){
 		LOG(FATAL) << "Cannot open the file";
 	}
-	Lexer lexer(fin);
-	Token token;
-	while((token = lexer()) != Token(Operator::EndOfFile)){
-		cout << token.get() << endl;
-	}
+	AST::Parser parser(fin);
+	auto result = parser();
+	cout << to_string((int)(*result).kind) << endl;
 	ShutdownGoogleLogging();
 	return 0;
 }

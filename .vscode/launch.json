@@ -15,7 +15,7 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": false
+            "console": "internalConsole"
         },
         {
             "name": "(gdb) 启动",
@@ -23,12 +23,11 @@
             "request": "launch",
             "program": "${command:cmake.launchTargetPath}",
             "args": [
-                "test/helloworld.l"
+                "test/hello.l"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": false,
             "MIMode": "gdb",
             "miDebuggerPath": "gdb",
             "setupCommands": [
