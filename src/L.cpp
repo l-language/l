@@ -16,8 +16,9 @@ int main(int argc, char const* argv[]) {
 		LOG(FATAL) << "Cannot open the file";
 	}
 	AST::Parser parser(fin);
-	auto result = parser();
-	cout << to_string((int)(*result).kind) << endl;
+	while(!parser.isEnd()){
+		parser();
+	}
 	ShutdownGoogleLogging();
 	return 0;
 }

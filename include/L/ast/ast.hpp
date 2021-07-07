@@ -1,6 +1,7 @@
 #pragma once
 #include <L.hpp>
 #include <L/lexer.hpp>
+#include <L/helper.hpp>
 #include <memory>
 namespace L{
     namespace AST{
@@ -8,6 +9,9 @@ namespace L{
             MainNode,
             DeclareVariable,
             StatementBlock,
+            Number,
+            Double,
+            String
         };
         class Node{
         private:

@@ -5,5 +5,9 @@ namespace L {
 		extern bool islalnum(char);
 		extern bool islalpha(char);
 		extern bool islpunct(char);
+		template<typename T,typename F>
+		T cast(F f){
+			return *reinterpret_cast<double*>(&f);
+		}
 	}
 }

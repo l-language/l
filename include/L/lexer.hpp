@@ -53,6 +53,8 @@ namespace L {
 		unsigned long long index;
 		TokenKind type;
 		Token(std::string);
+		Token(int);
+		Token(double);
 		Token(Operator);
 		Token(): type(TokenKind::Unknown){}
 		std::string get();
@@ -75,6 +77,7 @@ namespace L {
 		Lexer(std::istream&);
 		~Lexer();
 		Token operator()();
+		bool isEnd();
 		DEFINE_READER(String)
 		DEFINE_READER(Number)
 		DEFINE_READER(Operator)

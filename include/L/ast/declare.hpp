@@ -1,3 +1,4 @@
+#pragma once
 #include <L/ast/ast.hpp>
 namespace L{
     namespace AST{

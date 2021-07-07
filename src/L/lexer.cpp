@@ -3,6 +3,7 @@
 using namespace std;
 
 namespace L {
+	//Token
 	Token::Token(string str) {
 		auto& keywords = Lexer::keywords;
 		auto iter = find(begin(keywords), end(keywords), str);
@@ -16,6 +17,14 @@ namespace L {
 				table.push_back(str);
 			}
 		}
+	}
+	Token::Token(int i){
+		type = TokenKind::Integer;
+		index = i;
+	}
+	Token::Token(double d){
+		type = TokenKind::Double;
+		index = *reinterpret_cast<unsigned long long*>(&d);
 	}
 	Token::Token(Operator op){
 		type = TokenKind::Operator;
@@ -32,14 +41,53 @@ namespace L {
 			case TokenKind::Operator: {
 				return to_string(index);
 			}
+			case TokenKind::Double :{
+				return to_string(*reinterpret_cast<double*>(&index));
+			}
+			case TokenKind::Integer: {
+				return to_string(index);
+			}
 		}
 		return "";
 	}
+
+	//Lexer
 	Lexer::Lexer(std::istream& fin_) :
 		fin(fin_) {
 	}
 	Lexer::~Lexer() {
 	}
+	Token Lexer::operator()() {
+		while (next() != EOF) {
+			switch (current) {
+			case '\n':
+				++line;
+			case ' ':
+			case '\t':
+				continue;
+			case '"':
+				unget();
+				return readString();
+			default:
+				std::string result {current};
+				if (Helper::islalpha(current)) {
+					while (Helper::islalnum(peek())){
+						result += next();
+					}
+					return Token(result);
+				} else if(Helper::islpunct(current)){
+					return readOperator();
+				} else if(isdigit(current)){
+					fin.unget();
+					return readNumber();
+				}
+				return Token("");
+				break;
+			}
+		}
+		return Token(Operator::EndOfFile);
+	}
+	//Lexer reader
 	Token Lexer::readString() {
 		std::string result;
 		bool escape = false;
@@ -157,32 +205,31 @@ namespace L {
 		}
 		return Operator::Unknown;
 	};
-	Token Lexer::operator()() {
-		while (next() != EOF) {
-			switch (current) {
-			case '\n':
-				++line;
-			case ' ':
-			case '\t':
-				continue;
-			case '"':
-				unget();
-				return readString();
-			default:
-				std::string result {current};
-				if (Helper::islalpha(current)) {
-					while (Helper::islalnum(peek())){
-						result += next();
-					}
-					return Token(result);
-				} else if(Helper::islpunct(current)){
-					return readOperator();
-				}
-				return Token("");
-				break;
+	Token Lexer::readNumber(){
+		int i = 0;
+		double d = 0.0;
+		unsigned int length = 0;
+		while ((current = fin.get()) != EOF){
+			if(isalpha(current)) throw runtime_error("Number error");
+			if(current == '.'){
+				length = 1;
+				d = i;
+			}
+			if(isdigit(current)&&!length)
+				i = i * 10 + current - 48;
+			if(isdigit(current)&&length){
+				d += (current - 48)/pow(10, length-1);
+				++length;
+			}
+			if(current == '.'){
+				++length;
+				d = i;
 			}
 		}
-		return Token(Operator::EndOfFile);
+		return length?Token(d):Token(i);
+	}
+	bool Lexer::isEnd(){
+		return peek() == EOF;
 	}
 	const std::vector<std::string> Lexer::keywords = {
 		"let",

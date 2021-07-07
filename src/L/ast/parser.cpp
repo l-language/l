@@ -12,6 +12,16 @@ namespace L{
                     case TokenKind::Identifier:{
                         return readIdentifier();
                     }
+                    case TokenKind::String:{
+                        return std::shared_ptr<Node>(new String(current.get()));
+                    }
+                    case TokenKind::Double:{
+                        return std::shared_ptr<Node>(new Double(Helper::cast<double>(current.index)));
+                    }
+                    case TokenKind::Integer:{
+                        std::shared_ptr<Node> result(new Number(current.index));
+                        return result;
+                    }
                 }
 	        }
             return nullptr;
@@ -36,6 +46,7 @@ namespace L{
                     return result;
                 }
             }
+            return 0;
         }
         std::shared_ptr<Node> Parser::readIdentifier(){
             return nullptr;

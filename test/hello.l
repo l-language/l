@@ -1,1 +1,1 @@
-let a : duwuidwudhw = djdfhsdugfuseg;
+let a : duwuidwudhw = 1234567.12345;
