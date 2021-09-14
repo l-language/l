@@ -16,6 +16,7 @@ namespace L{
         class Node{
         private:
         public:
+            static unsigned int level;
             Node(NodeKind kind_): kind(kind_){}
             virtual ~Node(){}
             NodeKind kind;
